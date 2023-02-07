@@ -1,17 +1,21 @@
-console.log('Server-side code running');
-
 const express = require('express');
 const app = express();
 
 // serve files from the public directory
 app.use(express.static(__dirname));
 
+/*
 const hostname = '127.0.0.1';
 const port = 3000;
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+*/
+
+const port = process.env.PORT || 3001;
+
+app.listen(port, () => console.log(`App listening on port ${port}!`));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
